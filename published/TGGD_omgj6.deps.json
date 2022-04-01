@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v5.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v5.0": {
+      "TGGD_omgj6/1.0.0": {
+        "runtime": {
+          "TGGD_omgj6.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "TGGD_omgj6/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
