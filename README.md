@@ -1,5 +1,6 @@
 # TGGD_omgj6
 A game in VB.NET about getting high scores
 
-- [ ] Terminal.gui
+- [x] Terminal.gui
+- [ ] put explanatory labels on the main menu
 - [ ] 
