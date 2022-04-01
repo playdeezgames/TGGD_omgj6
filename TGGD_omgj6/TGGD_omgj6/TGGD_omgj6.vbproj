@@ -29,12 +29,4 @@
     </Content>
   </ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Terminal.Gui" Version="1.4.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Import Include="Terminal.Gui" />
-  </ItemGroup>
-
 </Project>
