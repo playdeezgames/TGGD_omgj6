@@ -14,6 +14,7 @@ Module Program
                     ShowMainMenu()
                 Case ProgramState.InPlay
                     InPlay.Run()
+                    programState = ProgramState.MainMenu
             End Select
         End While
     End Sub
