@@ -14,6 +14,10 @@ Module Program
             Dim dialog As New Dialog With {.Title = "A Game in VB.NET About High Scores"}
             dialog.AddButton(startButton)
             dialog.AddButton(quitButton)
+            dialog.Add(New Label(1, 1, $"High Score: {ReadHighScore()}"))
+            dialog.Add(New Label(1, 2, $"Games Played: {ReadGamesPlayed()}"))
+            dialog.Add(New Label(1, 3, $"Total Score: {ReadTotalScore()}"))
+            dialog.Add(New Label(1, 4, $"Average Score: {ReadAverageScore()}"))
             Application.Run(dialog)
         End While
     End Sub
