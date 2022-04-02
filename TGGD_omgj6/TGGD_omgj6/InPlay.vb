@@ -28,13 +28,21 @@
 
     Private Sub FinishBoard()
         Console.Clear()
+        Console.ForegroundColor = ConsoleColor.Gray
         Console.WriteLine("Time's up!")
         Console.WriteLine($"Final Score: {score}")
+        If score > ReadHighScore() Then
+            Console.WriteLine("New high score!")
+            WriteHighScore(score)
+        End If
+        WriteTotalScore(ReadTotalScore() + score)
+        WriteGamesPlayed(ReadGamesPlayed() + 1)
         Console.WriteLine("<space> to continue")
         WaitKey(ConsoleKey.Spacebar)
     End Sub
 
     Private Sub DrawBoardBackground()
+        Console.ForegroundColor = ConsoleColor.DarkGray
         For row = 0 To BoardRows - 1
             For column = 0 To BoardColumns - 1
                 Console.CursorLeft = column
@@ -53,6 +61,7 @@
     End Sub
 
     Private Sub HideThingies()
+        Console.ForegroundColor = ConsoleColor.DarkGray
         Console.CursorLeft = targetColumn
         Console.CursorTop = targetRow
         Console.Write(".")
@@ -62,9 +71,11 @@
     End Sub
 
     Private Sub ShowThingies()
+        Console.ForegroundColor = ConsoleColor.Yellow
         Console.CursorLeft = targetColumn
         Console.CursorTop = targetRow
         Console.Write("$")
+        Console.ForegroundColor = ConsoleColor.White
         Console.CursorLeft = playerColumn
         Console.CursorTop = playerRow
         Console.Write("@")
@@ -90,11 +101,20 @@
         End If
     End Sub
     Private Sub ShowScore()
+        Console.ForegroundColor = ConsoleColor.Green
         Console.CursorLeft = BoardColumns + 1
         Console.CursorTop = 1
         Console.Write($"Score: {score} ")
     End Sub
     Private Sub ShowTimeLeft()
+        Select Case TimeLeft
+            Case Is < 5
+                Console.ForegroundColor = ConsoleColor.Red
+            Case Is < 10
+                Console.ForegroundColor = ConsoleColor.DarkYellow
+            Case Else
+                Console.ForegroundColor = ConsoleColor.DarkGreen
+        End Select
         Console.CursorLeft = BoardColumns + 1
         Console.CursorTop = 0
         Console.Write($"Time Left: {TimeLeft} ")

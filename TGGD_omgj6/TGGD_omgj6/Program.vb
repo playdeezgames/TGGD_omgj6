@@ -5,9 +5,11 @@ Module Program
         Dim done = False
         While Not done
             Console.Clear()
-            Console.WriteLine()
             Console.WriteLine("Main Menu:")
-            Console.WriteLine("Pro Tip: Don't hold the movement keys down!")
+            Console.WriteLine($"High Score: {ReadHighScore()}")
+            Console.WriteLine($"Total Score: {ReadTotalScore()}")
+            Console.WriteLine($"Games Played: {ReadGamesPlayed()}")
+            Console.WriteLine($"Average Score: {ReadAverageScore()}")
             Console.WriteLine("[S]tart")
             Console.WriteLine("[Q]uit")
             Select Case WaitKey(ConsoleKey.Q, ConsoleKey.S)
