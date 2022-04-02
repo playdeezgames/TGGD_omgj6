@@ -23,31 +23,52 @@
         While TimeLeft > 0
             UpdateBoard()
         End While
+        FinishBoard()
     End Sub
 
-    Private Sub UpdateBoard()
-        MovePlayer()
-        DrawBoard()
-        ShowTimeLeft()
-        ShowScore()
+    Private Sub FinishBoard()
+        Console.Clear()
+        Console.WriteLine("Time's up!")
+        Console.WriteLine($"Final Score: {score}")
+        Console.WriteLine("<space> to continue")
+        WaitKey(ConsoleKey.Spacebar)
     End Sub
 
-    Private Sub DrawBoard()
+    Private Sub DrawBoardBackground()
         For row = 0 To BoardRows - 1
             For column = 0 To BoardColumns - 1
                 Console.CursorLeft = column
                 Console.CursorTop = row
-                If column = playerColumn And row = playerRow Then
-                    Console.Write("@")
-                ElseIf column = targetColumn And row = targetRow Then
-                    Console.Write("$")
-                Else
-                    Console.Write(".")
-                End If
+                Console.Write(".")
             Next
         Next
     End Sub
 
+    Private Sub UpdateBoard()
+        HideThingies()
+        MovePlayer()
+        ShowThingies()
+        ShowTimeLeft()
+        ShowScore()
+    End Sub
+
+    Private Sub HideThingies()
+        Console.CursorLeft = targetColumn
+        Console.CursorTop = targetRow
+        Console.Write(".")
+        Console.CursorLeft = playerColumn
+        Console.CursorTop = playerRow
+        Console.Write(".")
+    End Sub
+
+    Private Sub ShowThingies()
+        Console.CursorLeft = targetColumn
+        Console.CursorTop = targetRow
+        Console.Write("$")
+        Console.CursorLeft = playerColumn
+        Console.CursorTop = playerRow
+        Console.Write("@")
+    End Sub
     Private Sub MovePlayer()
         If playerColumn = targetColumn And playerRow = targetRow Then
             Beep(1000, 100)
@@ -84,6 +105,7 @@
     End Sub
     Private Sub InitializeBoard()
         Console.Clear()
+        DrawBoardBackground()
         timeStarted = DateTime.Now
         playerColumn = random.Next(0, BoardColumns - 1)
         playerRow = random.Next(0, BoardRows - 1)
