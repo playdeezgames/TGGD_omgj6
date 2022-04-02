@@ -11,10 +11,10 @@
     Private ReadOnly Property TimeLeft As Integer
         Get
             Dim delta = DateTime.Now - timeStarted
-            If delta.TotalSeconds >= 60 Then
+            If delta.TotalSeconds >= 59 Then
                 Return 0
             Else
-                Return CInt(60.0 - delta.TotalSeconds)
+                Return CInt(59.0 - delta.TotalSeconds)
             End If
         End Get
     End Property
